@@ -5,6 +5,9 @@
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate:local": "wrangler d1 migrations apply immodz --local",
+		"db:migrate": "wrangler d1 migrations apply immodz --remote",
 		"start": "next start",
 		"lint": "next lint"
 	},
@@ -16,6 +19,7 @@
 		"@tanstack/react-query-devtools": "^5.76.1",
 		"@tanstack/react-table": "^8.21.3",
 		"cva": "1.0.0-beta.0",
+		"drizzle-orm": "^0.43.1",
 		"next": "15.3.2",
 		"ofetch": "^1.4.1",
 		"radix-ui": "^1.4.1",
@@ -30,9 +34,12 @@
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
+		"dotenv": "^16.5.0",
+		"drizzle-kit": "^0.31.1",
 		"eslint": "^9",
 		"eslint-config-next": "15.3.2",
 		"tailwindcss": "^4",
-		"typescript": "^5"
+		"typescript": "^5",
+		"wrangler": "^4.16.0"
 	}
 }
