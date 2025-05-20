@@ -1,0 +1,8 @@
+main = 'app/worker.ts'
+name = "immodz-api"
+compatibility_date = "2025-05-08"
+[[d1_databases]]
+binding = "DB"
+database_name = "immodz"
+database_id = "b492a466-71d4-4658-91f2-dc624bf27d1e"
+migrations_dir = "./lib/db/migrations"

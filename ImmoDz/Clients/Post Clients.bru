@@ -1,0 +1,21 @@
+meta {
+  name: Post Clients
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8787/api/client
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "test",
+    "email": "",
+    "phone_number": "string",
+    "type": "string",
+    "status": "active"
+  }
+}
