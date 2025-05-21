@@ -1,7 +1,7 @@
 import { drizzle, DrizzleD1Database } from "drizzle-orm/d1";
 import { clients } from "../lib/db/schema";
-import { UpdateClient } from "../utils/schema/client";
-import { z } from "zod";
+import { CreateClient } from "../utils/schema/client";
+
 
 export interface Env {
 	DB: DrizzleD1Database;
@@ -18,7 +18,7 @@ const worker = {
 		}
 		if (url.pathname === "/api/clients" && request.method === "POST") {
 			const body = await request.json();
-			const validated = UpdateClient.extend({ status: z.string().min(1).max(100) }).parse(body)
+			const validated = CreateClient.parse(body)
 			await db.insert(clients).values(validated);
 			return Response.json({ success: true, message: "Client created" });
 		}

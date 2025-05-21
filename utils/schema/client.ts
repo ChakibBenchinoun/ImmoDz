@@ -7,14 +7,18 @@ export enum ClientStatusEnum {
 }
 
 export const Client = z.object({
-	created_at: z.string(),
+	client_id: z.number(),
 	status: z.string(),
 	name: z.string(),
 	email: z.string().email().optional().or(z.literal("")),
 	phone_number: z.string(),
 	type: z.string(),
 	version: omitEmpty(z.number()),
+	created_at: z.string(),
+	updated_at: z.string(),
 });
+
+export type Client = z.infer<typeof Client>;
 
 export const UpdateClient = z.object({
 	name: z
@@ -31,3 +35,10 @@ export const UpdateClient = z.object({
 		.min(1, "must be provided")
 		.max(500),
 });
+
+
+export const CreateClient = UpdateClient.extend({
+	status: z.nativeEnum(ClientStatusEnum),
+});
+
+export type CreateClient = z.infer<typeof CreateClient>;
